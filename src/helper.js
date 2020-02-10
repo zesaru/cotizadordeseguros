@@ -25,3 +25,8 @@ export function calcularMarca(marca) {
 
   return incremento;
 }
+
+// Calcula el tipo de seguro
+export function obtenerPlan(plan) {
+  return plan === "basico" ? 1.2 : 1.5;
+}
