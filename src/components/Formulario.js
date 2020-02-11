@@ -47,7 +47,7 @@ const Error = styled.div`
   margin-bottom: 2rem;
 `;
 
-const Formulario = ({ guardarResumen }) => {
+const Formulario = ({ guardarResumen, guardarCargando }) => {
   const [datos, guardarDatos] = useState({
     marca: "",
     year: "",
@@ -95,12 +95,19 @@ const Formulario = ({ guardarResumen }) => {
     const incrementoPlan = obtenerPlan(plan);
     resultado = parseFloat(incrementoPlan * resultado).toFixed(2);
 
-    console.log(resultado);
     // Total
-    guardarResumen({
-      cotizacion: resultado,
-      datos
-    });
+    guardarCargando(true);
+
+    setTimeout(() => {
+      // Elimina el spinner
+      guardarCargando(false);
+
+      // pasa la información al componente principal
+      guardarResumen({
+        cotizacion: resultado,
+        datos
+      });
+    }, 2000);
   };
 
   return (
