@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import Header from "./components/Header";
-import styled from "@emotion/styled";
 import Formulario from "./components/Formulario";
 import Resumen from "./components/Resumen";
+import Resultado from "./components/Resultado";
+import styled from "@emotion/styled";
 
 const Contenedor = styled.div`
   max-width: 600px;
@@ -24,13 +25,14 @@ function App() {
   });
 
   // extraer datos
-  const { datos } = resumen;
+  const { cotizacion, datos } = resumen;
   return (
     <Contenedor>
       <Header titulo="Cotizador de seguros" />
       <ContenedorFormulario>
         <Formulario guardarResumen={guardarResumen} />
         <Resumen datos={datos} />
+        <Resultado cotizacion={cotizacion} />
       </ContenedorFormulario>
     </Contenedor>
   );
